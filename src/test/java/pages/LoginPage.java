@@ -17,7 +17,7 @@ public class LoginPage extends BasePage {
     private WebElement loginButton;
 
     public LoginPage() {
-        driver.get("https://www.saucedemo.com/");
+        driver.get("https://www.saucedemo.com");
         PageFactory.initElements(driver, this);
     }
 
