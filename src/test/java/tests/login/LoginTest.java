@@ -1,31 +1,27 @@
 package tests.login;
 
+import core.BaseTest;
 import helpers.Config;
-import pages.LoginPage;
+import helpers.constants.URL;
 import io.qameta.allure.Description;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.By;
+import pages.LoginPage;
+import java.util.Objects;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class LoginTest {
-    private LoginPage loginPage = new LoginPage();
-    String login = Config.get("USERNAME");
-    String password = Config.get("PASSWORD");
+public class LoginTest extends BaseTest {
 
     @Test
     @Description("Проверка успешного логина с корректными учетными данными")
     public void testSuccessfulLogin() {
+        LoginPage loginPage = new LoginPage();
+        String login = Config.get("USERNAME");
+        String password = Config.get("PASSWORD");
 
         loginPage.loginOnSite(login, password);
 
-
-
-
-//        assertTrue(driver.getCurrentUrl().contains("inventory.html"));
-//        assertTrue(driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[2]/span")).getText().contains("Products"));
+        assertTrue(Objects.requireNonNull(driver.getCurrentUrl()).contains(URL.INVENTORY));
+        assertTrue(driver.findElement(By.xpath("//*[@id=\"header_container\"]/div[2]/span")).getText().contains("Products"));
     }
-
-//    @Step("Выполнение логина с пользователем {userName}")
-//    private void login(String userName, String password) {
-//        loginPage.login(userName, password);
-//    }
 }
-
