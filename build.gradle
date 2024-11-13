@@ -1,19 +1,25 @@
 plugins {
     id 'java'
+    id 'io.qameta.allure' version '2.8.1'
 }
-
-group = 'com.saucedemo'
-version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    testImplementation platform('org.junit:junit-bom:5.10.0')
-    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.26.0'
+    implementation 'io.github.bonigarcia:webdrivermanager:5.9.2'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.1'
+
+    implementation 'io.github.cdimascio:java-dotenv:5.2.2'
+    testImplementation 'org.slf4j:slf4j-api:1.7.32'
+    testImplementation 'org.slf4j:slf4j-simple:1.7.32'
+    testImplementation 'io.qameta.allure:allure-junit5:2.13.9'
 }
 
 test {
     useJUnitPlatform()
+    systemProperty 'allure.results.directory', "/allure-results"
 }

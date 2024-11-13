@@ -1,4 +1,4 @@
-package tests.helpers;
+package helpers;
 
 import io.github.cdimascio.dotenv.Dotenv;
 
